@@ -3,9 +3,9 @@ import { View, Text, StyleSheet } from 'react-native';
 
 const WeatherItem = ({title, value, unit}) => {
     return(
-        <View>
-            <Text>{title}</Text>
-            <Text>{value}{unit}</Text>
+        <View style={styles.weatherItem}>
+            <Text style={styles.weatherItemTitle}>{title}</Text>
+            <Text style={styles.weatherItemTitle}>{value}{unit}</Text>
         </View>
     )
 }
@@ -20,7 +20,7 @@ const DateTime = () => {
                 <View>
                     <Text style={styles.subheading}>Tuesday, November 9</Text>
                 </View>
-                <View>
+                <View style={styles.weatherItemContainer}>
                     <WeatherItem title="Humidity" value="79" unit="%"/>
                     <WeatherItem title="Pressure" value="1000" unit="hPA"/>
                     <WeatherItem title="Sunrise" value="06:00" unit="am"/>
@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
         flex: 1.5,
         flexDirection: "row",
         justifyContent: "space-between",
+        padding: 15
         
     },
     heading: {
@@ -60,6 +61,21 @@ const styles = StyleSheet.create({
     location: {
         fontSize:16,
         color: 'white',
+    },
+    weatherItemContainer: {
+        backgroundColor: "#18181b99",
+        borderRadius: 10,
+        padding: 10,
+        marginTop: 10
+    },
+    weatherItem: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    weatherItemTitle: {
+        color:'#eee',
+        fontSize: 14,
+        fontWeight: '100'
     }
 })
 
