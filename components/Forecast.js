@@ -1,22 +1,39 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
+import moment from 'moment-timezone'
 
-const Forecast = () => {
+const Forecast = ({data}) => {
     return (
-        <View>
-            <ForecastItem/>
+        <View style={{flexDirection: 'row'}}>
+
+            {
+                data && data.length > 0 ? 
+
+                data.map((data, idx) => (
+
+                    idx !== 0 &&  <ForecastItem key={idx} forecastItem={data}/>
+                ))
+
+                :
+
+                <View/>
+            }
+          
+            
+
         </View>
     )
 }
 
-const ForecastItem = () => {
-    const img = {uri: 'http://openweathermap.org/img/wn/10d@2x.png'}
+const ForecastItem = ({forecastItem}) => {
+    const img = {uri: "http://openweathermap.org/img/wn/"+forecastItem.weather[0].icon+"@2x.png"}
     return (
-        <View style={styles.futureForecastItemContainer}>
-            <Text style={styles.day}>Mon</Text>
-            <Image source={img} style={styles.image}/>
-            <Text style={styles.temp}>Night - 26</Text>
-            <Text style={styles.temp}>Day - 36</Text>
+        <View  style={styles.futureForecastItemContainer}>
+            <Text  style={styles.day}>{moment(forecastItem.dt * 1000).format('ddd')}</Text>
+            <Image source={img} style={styles.image} />
+            <Text  style={styles.temp}>Night - {forecastItem.temp.night}&#176;F</Text>
+            <Text  style={styles.temp}>Day - {forecastItem.temp.day}&#176;F</Text>
+
         </View>
     )
 }
