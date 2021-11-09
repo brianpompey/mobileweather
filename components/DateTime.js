@@ -40,11 +40,13 @@ const styles = StyleSheet.create({
         flex: 1.5,
         flexDirection: "row",
         justifyContent: "space-between",
+        
     },
     heading: {
         fontSize: 45,
         color: 'white',
-        fontWeight: '100'
+        fontWeight: '100',
+        marginTop: 80
     },
     subheading: {
         fontSize: 25,
@@ -53,6 +55,7 @@ const styles = StyleSheet.create({
     },
     rightAlign: {
         textAlign:'right',
+        marginTop: 100
     },
     location: {
         fontSize:16,
