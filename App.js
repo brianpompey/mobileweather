@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, {useEffect, useState} from 'react';
 import { StyleSheet, Text, View, ImageBackground } from 'react-native';
 import * as Location from 'expo-location';
+import config from './config';
 
 import DateTime from './components/DateTime';
 import WeatherScroll from './components/WeatherScroll';
@@ -24,7 +25,7 @@ export default function App() {
   }, [])
 
   const fetchDataFromApi = (latitude, longitude) => {
-    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units=imperial&appid=${"2a680c7a58c281fbfcd8d9a2a5dcb921"}`).then(res => res.json()).then(data => {
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units=imperial&appid=${config.WEATHER_API}`).then(res => res.json()).then(data => {
 
       // console.log(data)
       setData(data)
